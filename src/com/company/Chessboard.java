@@ -11,29 +11,23 @@ class Chessboard {
             throw new IllegalArgumentException("Arguments must be larger than zero");
         }
     }
-    private String space()
-    {
-        return"  ";
-    }
-    private String star()
-    {
-        return "*";
-    }
-private StringBuilder If_true(int j)
-{StringBuilder stringBuilder = new StringBuilder();
-    if (j % 2 == 0) {
-        stringBuilder.append(star());
-    } else {
-        stringBuilder.append(space());
-    }
-    return stringBuilder;
-}
-    private StringBuilder If_false(int j)
-    {StringBuilder stringBuilder = new StringBuilder();
-        if (j % 2 == 0) {
-            stringBuilder.append(space());
+
+    private StringBuilder ChoseElements(int i, int j) {
+        String space = "  ";
+        String star = "*";
+        StringBuilder stringBuilder = new StringBuilder();
+        if (i % 2 == 0) {
+            if (j % 2 == 0) {
+                stringBuilder.append(star);
+            } else {
+                stringBuilder.append(space);
+            }
         } else {
-            stringBuilder.append(star());
+            if (j % 2 == 0) {
+                stringBuilder.append(space);
+            } else {
+                stringBuilder.append(star);
+            }
         }
         return stringBuilder;
     }
@@ -42,12 +36,8 @@ private StringBuilder If_true(int j)
         String result;
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < height; i++) {
-            for (int j = 0; j < 2*width; j++) {
-                if (i % 2 == 0) {
-                    stringBuilder.append(If_true(j));
-                } else {
-                    stringBuilder.append(If_false(j));
-                }
+            for (int j = 0; j < 2 * width; j++) {
+                ChoseElements(i, j);
             }
             if (i < height - 1) {
                 stringBuilder.append("\n");
