@@ -1,10 +1,10 @@
-package com.company;
+package com.company.Service;
 
-class Chessboard {
+public class Chessboard {
     private double height;
     private double width;
 
-    Chessboard(String height, String width) throws NumberFormatException {
+    public Chessboard(String height, String width) throws NumberFormatException {
         this.height = Double.parseDouble(height);
         this.width = Double.parseDouble(width);
         if (this.height <= 0 || this.width <= 0) {
@@ -32,12 +32,12 @@ class Chessboard {
         return stringBuilder;
     }
 
-    String getPicture() {
+    public String getPicture() {
         String result;
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < 2 * width; j++) {
-                ChoseElements(i, j);
+                stringBuilder.append(ChoseElements(i, j));
             }
             if (i < height - 1) {
                 stringBuilder.append("\n");
